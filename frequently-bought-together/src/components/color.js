@@ -1,0 +1,28 @@
+import React, { useState } from "react";
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+const ColorSelect = ({ id, color }) => {
+  const colors = {
+    black: "black",
+    green: "green",
+  };
+  const [prodColor, setProductColor] = useState();
+
+  return (
+    <>
+      <div className="color-container">
+        <div className="color-circle">
+          <div
+            className="color-inner"
+            style={
+              id === 17
+                ? { "background-color": color[0].color }
+                : { "background-color": color[1].color }
+            }
+          ></div>
+        </div>
+        <div className="select-color"><span>{id === 17 ? color[0].label : color[1].label}</span> <KeyboardArrowRightIcon /></div>
+      </div>
+    </>
+  );
+};
+export default ColorSelect;
