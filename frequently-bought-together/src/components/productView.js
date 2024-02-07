@@ -1,8 +1,9 @@
+import React,{useState} from "react";
 import { Rating } from "@mui/material";
-import React from "react";
 import { useLocation } from "react-router-dom";
 const ProductView = () => {
   const { state } = useLocation();
+  const [imageTumpnail,setImageThumbnail] = useState(state.image);
   const imageTumpnails = [
     {
         src:"https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
@@ -20,13 +21,16 @@ const ProductView = () => {
         src:"https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
     }
 ]
+const changeThumpnail = (src)=>{
+    setImageThumbnail(src)
+}
   return (
     <div className="product-view-container">
       <div className="product-view">
         <div className="main-image-container">
-          <img src={state.image} alt={state.title} />
+          <img src={imageTumpnail} alt={state.title} />
         </div>
-        <div className="image-thumbnail.container">
+        <div className="image-thumbnail-container">
           <div className="title-description">
             <h4>{state.title}</h4>
             <div className="rating-container">
@@ -41,9 +45,10 @@ const ProductView = () => {
           </div>
           <div className="thumpnail-container">
             {
-                imageTumpnails.map((item,i)=> <div className="thumpnail" ><img src={item.src} alt="i" /></div>)
+                imageTumpnails.map((item,i)=> <div className="thumpnail" onClick={()=>changeThumpnail(item.src)}><img src={item.src} alt="i" /></div>)
             }
           </div>
+          <button  className="add-to-basket">Add to Basket</button>
         </div>
       </div>
     </div>

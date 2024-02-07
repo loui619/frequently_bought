@@ -293,3 +293,6 @@
   width: 90%;
   height: 90%;
 }
+.image-thumbnail-container .add-to-basket{
+  width: 70% !important;
+}
