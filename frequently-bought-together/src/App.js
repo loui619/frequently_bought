@@ -9,9 +9,9 @@ import ProductListing from './components/productView';
 
 function App() {
   const products = useSelector((state)=>state.product)
+
   const dispatch = useDispatch();
-  
-    useEffect(()=>{
+  useEffect(()=>{
         dispatch(updateTotal())
     },[products])
   return (

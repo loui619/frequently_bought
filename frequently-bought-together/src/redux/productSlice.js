@@ -12,7 +12,8 @@ const initialState = {
         "rating": {
             "rate": 3.8,
             "count": 679
-        }
+        },
+        "cartedItem":1
     }],
     total:0,
     amount:0
@@ -31,18 +32,18 @@ const productSlice = createSlice({
     reducers:{
        incrementItem:(state,action)=>{
         //const cartIndex = state.addedItems.findIndex(items => items.id === action.payload.id);
-        const cartIndex = state.addedItems.filter(items=> items.id === action.payload.id);
-        const value = state.addedItems.find(items => items.id === action.payload.id)
-        console.log(cartIndex)
+        const item = state.addedItems.find(item=>item.id == action.payload.id)
+        item && item.cartedItem ++
         },
-        decrementItem:(state)=>{
-            state.value -=1
+        decrementItem:(state,action)=>{
+            const item = state.addedItems.find(item=>item.id == action.payload.id)
+            item && item.cartedItem --
         },
         updateTotal:(state)=>{
             let amount =0;
             let total = 0;
             state.addedItems.map((items)=>{
-                total += items.price
+                total += items.price * items.cartedItem
                 amount += items.price + 10
             })
             state.total = total.toPrecision(4);
@@ -76,5 +77,5 @@ const productSlice = createSlice({
        }
 })
 
-export const {updateTotal,addCart,removeCart,incrementItem} = productSlice.actions;
+export const {updateTotal,addCart,removeCart,incrementItem,decrementItem} = productSlice.actions;
 export default productSlice.reducer;

@@ -69,9 +69,10 @@ const FrequentlyBoughtTogther = ()=>{
                     image={item.image}
                     price={item.price}
                     rating={item.rating}
-                    cartedItem={true}
+                    cartedItem={1}
                     checked={true}
                     description={item.description}
+                    defaultItem={true}
                />  :"")
                 }
                 <span className="pos-relative"><AddIcon className="plus-sign"/></span>
