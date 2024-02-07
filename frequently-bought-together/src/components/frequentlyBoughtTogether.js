@@ -84,7 +84,7 @@ const FrequentlyBoughtTogther = ()=>{
                 price={item.price}
                 rating={item.rating}
                 cartedItem={false}
-                
+                checked={item.id <= 2 ? true : false}
            />)}
            </Slider>
             <div className="cart-container">

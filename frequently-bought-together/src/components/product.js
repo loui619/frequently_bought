@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import Rating from "@mui/material/Rating";
 import ColorSelect from './color';
 import Checkbox from '@mui/material/Checkbox';
@@ -6,9 +6,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { addCart,removeCart } from "../redux/productSlice";
 const Product = props => {
     const { id, title, image, price, rating,cartedItem,checked } = props;
-    console.log("props",props);
+  
   const dispatch = useDispatch()
   const [value, setValue] = useState(rating.rate);
+  const [isChecked,setIsChecked] = useState(checked);
+  useEffect(() => {
+    if(checked){
+        dispatch(addCart(props))
+    }
+  },[]);
   const colors = [
     {
         color:'#000000',
@@ -20,20 +26,22 @@ const Product = props => {
         label:'green'
     }
   ]
+  
   const addProductToCart =(e,items)=>{
-    const isChecked = e.target.checked;
-    if(isChecked){
-        const newObj = { ...items, amount: 1 };
-        dispatch(addCart(newObj))
+    const checked = e.target.checked;
+    setIsChecked(!isChecked);
+    if(checked){
+       
+        dispatch(addCart(items))
     }
     else{
-        const newObj = { ...items, amount: 0 };
-        dispatch(removeCart(newObj))
+        
+        dispatch(removeCart(items))
     }
   }
   return (
     <div className="products-list">
-    <Checkbox className="align-right" onChange={(e)=>addProductToCart(e,props)}    />
+    <Checkbox className="align-right" onChange={(e)=>addProductToCart(e,props)}   checked={isChecked} />
       <div className="prod-thumbnail-container">
         <img src={image} alt={title} />
       </div>
@@ -50,7 +58,7 @@ const Product = props => {
         <div className="rate-details">
             <div className="actual-price"><span >was &#8356; {(price+ 10 ).toPrecision(4)}</span></div>
             <div><span className="discounted-price">&#8356;{price.toPrecision(4)}</span><span>Inc VAT</span></div>
-            <span>&#8356;{(price -10).toPrecision(4) * .60} ex VAT</span>
+            <span>&#8356;{(price * .60).toPrecision(4)} ex VAT</span>
             <ColorSelect id={id} color={colors}/>
         </div>
       </div>
