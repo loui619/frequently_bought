@@ -101,11 +101,11 @@ const Product = (props) => {
         </div>
         {/* <Link to="/productview" state={props}> {defaultItem ? <span className="title-container"><h4 className="clear-block">This Item :</h4>  {title}</span> :<span className="title-container">{title}</span>}</Link> */}
         {defaultItem ? (
-          <span className="title-container">
+          <span className="title-container" onClick={handleClickOpen}>
             <h4 className="clear-block">This Item :</h4> {title}
           </span>
         ) : (
-          <span className="title-container">{title}</span>
+          <span className="title-container " onClick={handleClickOpen}>{title}</span>
         )}
         <div className="rate-details">
           <div className="actual-price">
