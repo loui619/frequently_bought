@@ -2,7 +2,7 @@ import React,{useEffect, useState} from 'react';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import { useDispatch } from 'react-redux';
-import { incrementItem,decrementItem } from '../redux/productSlice';
+import { incrementAmount } from '../redux/productSlice';
 const AddProduct = ({data,isChecked})=>{
     const dispatch = useDispatch();
     const [counter,setCounter] = useState(data.cartedItem)
@@ -13,12 +13,14 @@ const AddProduct = ({data,isChecked})=>{
     },[isChecked])
     const incrementCount = ()=>{
         setCounter(counter + 1)
-       
+        const newObj = Object.assign({counter:counter+1}, data);
+       dispatch(incrementAmount(newObj))
     }
     const decrementCount =()=>{
         if(counter > 1){
             setCounter(counter - 1)
-            
+            const newObj = Object.assign({counter:counter-1}, data);
+            dispatch(incrementAmount(newObj))
         }
         
     }

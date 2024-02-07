@@ -1,11 +1,16 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { Rating } from "@mui/material";
-import { useLocation } from "react-router-dom";
-import ProductCounter from "./productCounter";
+import { useSelector,useDispatch } from "react-redux";
 import AddProduct from "./addProduct";
+import { incrementAmount } from "../redux/productSlice";
 const ProductView = ({ data }) => {
-  const { state } = useLocation();
+  const prodAmount = useSelector((state)=>state.product)
   const [imageTumpnail, setImageThumbnail] = useState(data.image);
+  const dispatch = useDispatch();
+  useEffect(()=>{
+    const newData  = Object.assign({counter:1}, data);
+    dispatch(incrementAmount(newData))
+  },[])
   const imageTumpnails = [
     {
       src: "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
@@ -44,20 +49,20 @@ const ProductView = ({ data }) => {
         </div>
         <div className="image-thumbnail-container">
           <div className="actual-price">
-            <span>was &#8356; {(data.price + 10).toPrecision(4)}</span>
+            <span>was &#8356; {(prodAmount.amount + 10).toPrecision(4)}</span>
           </div>
           <div className="title-description">
             <div>
               <span className="discounted-price">
-                &#8356;{data.price.toPrecision(4)}
+                &#8356;{prodAmount.amount.toPrecision(4)}
               </span>
               <span>Inc VAT</span>
             </div>
-            <span>&#8356;{(data.price * 0.6).toPrecision(4)} ex VAT</span>
+            <span>&#8356;{(prodAmount.amount * 0.6).toPrecision(4)} ex VAT</span>
             <div className="discount">
               save &#8356;
               {(
-                (data.price + 10).toPrecision(4) - data.price.toPrecision(4)
+                (prodAmount.amount + 10).toPrecision(4) - prodAmount.amount.toPrecision(4)
               ).toPrecision(4)}
             </div>
           </div>

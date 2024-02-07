@@ -7,7 +7,7 @@ const ColorSelect = ({ id, color }) => {
   };
   const [prodColor, setProductColor] = useState(false);
   const changeColor = ()=>{
-    setProductColor(true)
+    setProductColor(!prodColor)
   }
   return (
     <>

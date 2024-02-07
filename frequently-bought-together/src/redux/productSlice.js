@@ -39,15 +39,18 @@ const productSlice = createSlice({
             const item = state.addedItems.find(item=>item.id == action.payload.id)
             item && item.cartedItem --
         },
+        incrementAmount:(state,action,value)=>{
+            state.amount = action.payload.price * action.payload.counter; 
+        },
         updateTotal:(state)=>{
             let amount =0;
             let total = 0;
             state.addedItems.map((items)=>{
                 total += items.price * items.cartedItem
-                amount += items.price + 10
+                //amount += items.price + 10
             })
             state.total = total.toPrecision(4);
-            state.amount = amount.toPrecision(4)
+            //state.amount = amount.toPrecision(4)
         },
         addCart:(state,action)=>{
             const cartIndex = state.addedItems.findIndex((items)=> items.id === action.payload.id);
@@ -77,5 +80,5 @@ const productSlice = createSlice({
        }
 })
 
-export const {updateTotal,addCart,removeCart,incrementItem,decrementItem} = productSlice.actions;
+export const {updateTotal,addCart,removeCart,incrementItem,decrementItem,incrementAmount} = productSlice.actions;
 export default productSlice.reducer;
