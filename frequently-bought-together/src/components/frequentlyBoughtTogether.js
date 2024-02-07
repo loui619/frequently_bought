@@ -71,6 +71,7 @@ const FrequentlyBoughtTogther = ()=>{
                     rating={item.rating}
                     cartedItem={true}
                     checked={true}
+                    description={item.description}
                />  :"")
                 }
                 <span className="pos-relative"><AddIcon className="plus-sign"/></span>
@@ -84,6 +85,7 @@ const FrequentlyBoughtTogther = ()=>{
                 price={item.price}
                 rating={item.rating}
                 cartedItem={false}
+                description={item.description}
                 checked={item.id <= 2 ? true : false}
            />)}
            </Slider>

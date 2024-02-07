@@ -4,8 +4,9 @@ import ColorSelect from './color';
 import Checkbox from '@mui/material/Checkbox';
 import { useDispatch, useSelector } from "react-redux";
 import { addCart,removeCart } from "../redux/productSlice";
+import { Link } from "react-router-dom";
 const Product = props => {
-    const { id, title, image, price, rating,cartedItem,checked } = props;
+    const { id, title, image, price, rating,cartedItem,checked,description } = props;
   
   const dispatch = useDispatch()
   const [value, setValue] = useState(rating.rate);
@@ -42,9 +43,11 @@ const Product = props => {
   return (
     <div className="products-list">
     <Checkbox className="align-right" onChange={(e)=>addProductToCart(e,props)}   checked={isChecked} />
-      <div className="prod-thumbnail-container">
+    <Link to="/productview" state={props}>
+        <div className="prod-thumbnail-container">
         <img src={image} alt={title} />
       </div>
+     </Link> 
       <div className="prod-description-container">
         <div className="rating-container"><Rating
           name="simple-controlled"
@@ -54,7 +57,7 @@ const Product = props => {
           }}
         />
         <span>{rating.count}</span></div>
-        {cartedItem ? <span className="title-container"><h4 className="clear-block">This Item :</h4>  {title}</span> :<span className="title-container">{title}</span>}
+        <Link to="/productview" state={props}> {cartedItem ? <span className="title-container"><h4 className="clear-block">This Item :</h4>  {title}</span> :<span className="title-container">{title}</span>}</Link>
         <div className="rate-details">
             <div className="actual-price"><span >was &#8356; {(price+ 10 ).toPrecision(4)}</span></div>
             <div><span className="discounted-price">&#8356;{price.toPrecision(4)}</span><span>Inc VAT</span></div>
