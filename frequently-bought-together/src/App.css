@@ -317,3 +317,15 @@
 .counter{
   width: 70%;
 }
+.color-list{
+  width: 100%;
+  background: #ffffff;
+}
+.color-list ul{
+  list-style: none;
+  padding: 0px;
+}
+.css-1t1j96h-MuiPaper-root-MuiDialog-paper{
+  width: 70% !important;
+  max-width: 100% !important;
+}
