@@ -54,6 +54,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  
 }
 .products-list img{ 
   width: 190px;
@@ -253,11 +254,16 @@
     align-items: center;
 }
 .main-image-container img{
-  width: 50%;
+  width: 60%;
+}
+.main-image-container{
+  display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 .product-view{
   width: 80%;
-    border: 1px solid #000000;
     display: grid;
     grid-auto-flow: column;
     grid-template-columns: 60% 40%;
@@ -267,6 +273,9 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
+    row-gap: 3px;
+    border-bottom: 1px solid #000000;
+    padding-bottom: 15px;
 }
 .title-description h4{
   margin-bottom: 0px !important;
@@ -279,9 +288,11 @@
 .thumpnail-container{
   display: grid;
   grid-template-columns: 20% 20% 20% 20% 20%;
-  width: 90%;
+  width: 80%;
   column-gap: 10px;
   margin-top: 20px;
+  justify-content: center;
+  align-items: center;
 }
 .thumpnail{
   border: 1px solid #000000;
@@ -292,9 +303,6 @@
 .thumpnail-container img{
   width: 90%;
   height: 90%;
-}
-.image-thumbnail-container .add-to-basket{
-  width: 70% !important;
 }
 .product-counter-container{
   height: 40px;
@@ -316,6 +324,7 @@
 
 .counter{
   width: 70%;
+  text-align: center;
 }
 .color-list{
   width: 100%;
@@ -328,4 +337,42 @@
 .css-1t1j96h-MuiPaper-root-MuiDialog-paper{
   width: 70% !important;
   max-width: 100% !important;
+}
+.title-description .discount{
+  margin-left: 0px !important;
+}
+.color-wrapper{
+  display: flex;
+  column-gap: 10px;
+  flex-direction: column;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #000000;
+}
+.color-wrapper .color-circle{
+  width: 40px;
+  height: 40px;
+  margin-left: 0px !important;
+}
+.color-wrapper .color-inner{
+  width: 35px;
+  height: 35px;
+  border: none !important;
+}
+.circleContainer{
+  display: flex;
+  align-items: center;
+    column-gap: 10px;
+}
+.product-wrapper{
+  margin-top: 20px;
+  width: 50%;
+}
+.rate-wrapper{
+  align-items: center;
+  display: flex;
+  grid-gap: 10px;
+  margin-left: 10px;
+}
+.css-140puxv-MuiTypography-root-MuiDialogTitle-root{
+  padding-bottom: 0px !important;
 }

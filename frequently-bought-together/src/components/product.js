@@ -132,11 +132,13 @@ const Product = (props) => {
       >
         <DialogTitle sx={{ m: 0, p: 2 }} id="customized-dialog-title">
           {title}
+          
         </DialogTitle>
-        <Rating
-            name="simple-controlled"
-            value={value}
-          />
+        <div className="rate-wrapper">
+        <Rating name="simple-controlled" value={value} /> 
+        <span>{rating.count}</span>
+        </div>
+        
         <IconButton
           aria-label="close"
           onClick={handleClose}
@@ -150,9 +152,8 @@ const Product = (props) => {
           <CloseIcon />
         </IconButton>
         <DialogContent dividers>
-          <ProductView data={props}/>
+          <ProductView data={props} />
         </DialogContent>
-       
       </BootstrapDialog>
     </div>
   );
