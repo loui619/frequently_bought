@@ -49,7 +49,7 @@ const ProductView = ({ data }) => {
         </div>
         <div className="image-thumbnail-container">
           <div className="actual-price">
-            <span>was &#8356; {(prodAmount.amount + 10).toPrecision(4)}</span>
+            <span>was &#8356; <strike>{(prodAmount.amount + 10).toPrecision(4)}</strike></span>
           </div>
           <div className="title-description">
             <div>

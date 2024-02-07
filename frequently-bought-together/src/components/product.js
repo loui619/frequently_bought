@@ -109,7 +109,7 @@ const Product = (props) => {
         )}
         <div className="rate-details">
           <div className="actual-price">
-            <span>was &#8356; {(price + 10).toPrecision(4)}</span>
+            <span>was &#8356; <strike>{(price + 10).toPrecision(4)}</strike></span>
           </div>
           <div>
             <span className="discounted-price">
