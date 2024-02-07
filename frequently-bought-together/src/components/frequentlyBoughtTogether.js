@@ -84,7 +84,7 @@ const FrequentlyBoughtTogther = ()=>{
                 image={item.image}
                 price={item.price}
                 rating={item.rating}
-                cartedItem={false}
+                cartedItem={1}
                 description={item.description}
                 checked={item.id <= 2 ? true : false}
            />)}

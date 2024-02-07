@@ -29,12 +29,15 @@ const productSlice = createSlice({
     name:"product",
     initialState,
     reducers:{
-       /*  increment:(state)=>{
-            state.value += 1
+       incrementItem:(state,action)=>{
+        //const cartIndex = state.addedItems.findIndex(items => items.id === action.payload.id);
+        const cartIndex = state.addedItems.filter(items=> items.id === action.payload.id);
+        const value = state.addedItems.find(items => items.id === action.payload.id)
+        console.log(cartIndex)
         },
-        decrement:(state)=>{
+        decrementItem:(state)=>{
             state.value -=1
-        } */
+        },
         updateTotal:(state)=>{
             let amount =0;
             let total = 0;
@@ -47,10 +50,7 @@ const productSlice = createSlice({
         },
         addCart:(state,action)=>{
             const cartIndex = state.addedItems.findIndex((items)=> items.id === action.payload.id);
-            if(cartIndex >= 0 ){
-
-            }
-            else{
+            if(cartIndex < 0 ){
                 state.addedItems.push(action.payload)
             }
             
@@ -76,5 +76,5 @@ const productSlice = createSlice({
        }
 })
 
-export const {updateTotal,addCart,removeCart} = productSlice.actions;
+export const {updateTotal,addCart,removeCart,incrementItem} = productSlice.actions;
 export default productSlice.reducer;

@@ -296,3 +296,24 @@
 .image-thumbnail-container .add-to-basket{
   width: 70% !important;
 }
+.product-counter-container{
+  height: 40px;
+    border: 1px solid #000000;
+    width: 100%;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+}
+.product-counter {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.decrement,.increment{
+  cursor: pointer;
+}
+
+.counter{
+  width: 70%;
+}
